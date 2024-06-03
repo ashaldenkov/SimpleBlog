@@ -1,0 +1,128 @@
+* {
+        font-family: Inter UI;
+
+}
+.article {
+    background-color: #FFFF;
+    width: 938px;
+    height: 140px;
+    margin-bottom: 26px;
+    border-radius: 5px;
+    padding: 18px 16px;
+}
+
+.article:first-child {
+    margin-top: 26px;
+}
+
+.tagsAndTitle {
+    width: 75%;
+    margin-right: auto;
+}
+
+.titleAndLikes {
+    display: flex;
+}
+
+.title {
+color: #1890FF;
+font-size: 20px;
+line-height: 28px;
+overflow: hidden;
+white-space: nowrap;
+position: relative;
+width: 100%;
+}
+
+.title:after{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 70px;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, .2) 0%, rgba(255, 255, 255, 1) 100%);
+    pointer-events: none;
+}
+
+.likes {
+    display: flex;
+    margin-right: 15px;
+    margin-left: 12px;
+    align-items: center;
+}
+
+.likes p {
+    margin-left: 7px;
+    font-size: 12px;
+    line-height: 22px;    
+}
+
+.tags {
+    display: flex;
+}
+
+.tag {
+    border: 1px solid black;
+    margin-left: 8px;
+    border-radius: 2px;
+    padding: 2px;
+}
+.tag:first-child {
+    margin-left: 0;
+    max-height: 52px;
+}
+
+.topInfo {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.author{
+    display: flex;
+    width: 25%;
+    justify-content: flex-end;
+}
+.author img {
+    border-radius: 23px;
+    margin-left: 12px;
+}
+
+.authorName {
+    font-size: 18px;
+    line-height: 28px;
+    color: #000000;
+    opacity: 85%;
+    text-align: end;
+    white-space: nowrap;
+}
+
+.createdAt {
+    color: #000000;
+    opacity: 50%;
+    font-size: 12px;
+    line-height: 22px;
+    text-align: end;
+}
+
+.articleText {
+    width: 682px;
+    height: 45px;
+    overflow: hidden;
+    margin-top: 6px;
+    font-size: 12px;
+    line-height: 22px;
+    text-overflow: ellipsis;
+    position: relative;
+}
+
+.articleText:after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 40px;
+    height: 50%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 1) 100%);
+    pointer-events: none;
+}

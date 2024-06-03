@@ -1,0 +1,41 @@
+
+.header {
+    color: #000000D9;
+    background-color: #FFFFFF;
+    height: 80px;
+    display: flex;
+    font-family: Inter UI;
+    font-size: 18px;
+    line-height: 28px;
+    justify-content: space-between;
+    padding: 8px 22px;
+}
+
+.btn {
+    width: 109px;
+    height: 51px;
+    background-color: #FFFFFF;
+    margin-left: 19px;
+    border: none;
+    font-family: Inter UI;
+    font-size: 18px;
+    line-height: 28px;
+}
+
+.btnActive {
+    border-radius: 5px;
+    border: 1px solid #52C41A;
+    color: #52C41A;
+}
+
+.title {
+    height: 56px;
+    display: flex;
+    align-items: center;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+}
+
