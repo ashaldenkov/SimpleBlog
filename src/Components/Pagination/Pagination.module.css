@@ -1,0 +1,64 @@
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    height: 40px;
+    align-items: center;
+}
+
+.pageBtn {
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
+    margin: 0px 15px;
+    border: none;
+    background-color: #EBEEF3;
+    color: #000000BF;
+    cursor: pointer;
+}
+
+.prevBtn {
+    background-color: #EBEEF3;
+    border: none;
+    display: flex;
+    height: 22px;
+    align-items: center;
+}
+
+.nextBtn{
+    background-color: #EBEEF3;
+    border: none;
+    display: flex;
+    height: 22px;
+    align-items: center;
+}
+
+.prevBtn img {
+    rotate: 180deg;
+}
+
+.prevBtn:not(:disabled):hover {
+    cursor: pointer;
+}
+
+.nextBtn:hover {
+    cursor: pointer;
+}
+
+.pageBtn:hover {
+    color: #ff0000;
+}
+
+.prevBtn:disabled, .nextBtn:disabled{
+    opacity: 75%;
+    cursor: default;
+}
+
+.activePage, .activePage:hover {
+    background-color: #1890FF;
+    cursor: default;
+    color: white;
+    opacity: 100%;
+}
+
+

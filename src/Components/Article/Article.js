@@ -2,19 +2,19 @@ import styles from './Article.module.css'
 import { format } from "date-fns";
 import heartIcon from './Icons/heart.png'
 import { v4 as uuidv4 } from 'uuid';
+import { Link } from "react-router-dom";
 
 export default function createArticleList(articles) {
     return (
         <ul>
-        {console.log(articles)}
         {articles.articles.map((item) => (
             <li className={styles.article} key={uuidv4()}>
                 <div className={styles.topInfo}>
                     <div className={styles.tagsAndTitle}>
                         <div className={styles.titleAndLikes}>
-                            <div className={styles.title}>
+                            <Link className={styles.title} to={item.slug}>
                             {item.title}
-                            </div>
+                            </Link>
                             <div className={styles.likes}>
                                 <img src={heartIcon} alt="likeCount" width='16px' height='16px'/>
                                 <p>{item.favoritesCount}</p>
@@ -27,7 +27,7 @@ export default function createArticleList(articles) {
                         </div>
                     </div>
                     <div className={styles.author}>
-                        <div>
+                        <div className={styles.dateAndName}>
                             <div className={styles.authorName}>{item.author.username}</div>
                             <div className={styles.createdAt}>{format(item.updatedAt, 'LLLL dd, yyyy')}</div>
                         </div>

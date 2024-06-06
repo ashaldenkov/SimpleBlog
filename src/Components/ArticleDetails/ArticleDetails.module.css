@@ -1,0 +1,178 @@
+.titleContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 100%;
+}
+
+.articleDescription {
+    background-color: white;
+    margin-top: 26px;
+    margin-bottom: 66px;
+    padding: 16px;
+    width: 938px;
+    min-height: 780px;
+}
+
+.tagsAndTitle {
+margin-right: auto;
+}
+
+.titleAndLikes {
+display: flex;
+}
+
+.title {
+color: #1890FF;
+font-size: 20px;
+line-height: 28px;
+white-space: pre-wrap;
+position: relative;
+width: 100%;
+}
+
+.likes {
+display: flex;
+margin: 6px 15px 0 12px;
+}
+
+.likes p {
+margin-left: 7px;
+font-size: 12px;
+line-height: 22px;    
+}
+
+.tags {
+display: flex;
+margin-top: 10px;
+margin-bottom: 20px;
+}
+
+.tag {
+border: 1px solid black;
+margin-left: 8px;
+border-radius: 2px;
+padding: 2px;
+}
+.tag:first-child {
+margin-left: 0;
+}
+
+.titleDescription {
+    opacity: 50%;
+    font-size: 12px;
+    line-height: 22px;
+    margin-bottom: 25px;
+    max-width: 682px;
+}
+
+.topInfo {
+display: flex;
+justify-content: flex-end;
+}
+
+.author{
+display: flex;
+justify-content: flex-end;
+}
+.author img {
+border-radius: 23px;
+margin-left: 12px;
+}
+
+.authorName {
+font-size: 18px;
+line-height: 28px;
+color: #000000;
+opacity: 85%;
+text-align: end;
+white-space: nowrap;
+}
+
+.createdAt {
+color: #000000;
+opacity: 50%;
+font-size: 12px;
+line-height: 22px;
+text-align: end;
+}
+
+.titleText {
+font-size: 20px;
+line-height: 28px;
+opacity: 75%;
+}
+
+@media (max-width: 700px) { 
+    .articleDescription {
+        margin-top: 2.5vw;
+        border-radius: 5px;
+        margin-bottom: 2.5vw;
+        padding: 10px;
+        width: 95vw;
+        min-height: auto;
+    }
+
+    .titleDescription {
+        line-height: 18px;
+        margin-bottom: 10px;
+        min-height: auto;
+    }    
+
+    .titleText {
+        font-size: 16px;
+        line-height: 18px;
+        white-space: normal;
+    }
+
+    .topInfo {
+        flex-direction: column;
+        }
+    .likes {
+        margin: 6px 0;
+    }
+    .likes p{
+        height: 20px;
+    }
+    .titleAndLikes {
+        flex-direction: column;
+    }
+
+    .tags {
+        margin: 0 0 6px 0;
+        overflow-x: scroll;
+    }
+    .tags::-webkit-scrollbar{
+        display:none;
+    }
+    
+    .tags::-webkit-scrollbar-thumb{
+        display:none;
+    }
+
+    .title {
+        width: auto;
+    }
+
+    .tagsAndTitle {
+        width: 100%;
+    }
+
+    .author{
+        margin: 6px 0;
+        flex-direction: row-reverse;
+    }
+
+    .author img {
+        margin-right: 12px;
+        margin-left: 0;
+        }
+    .createdAt {
+        text-align: start;
+    }
+
+}
+
+@media ((min-width: 701px) and (max-width: 1000px)) { 
+
+}
