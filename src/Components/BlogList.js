@@ -11,7 +11,6 @@ export default function BlogList() {
     const [page, setPage] = useState(1)
     const [pageLimit, setPageLimit] = useState(0)
     const [visiblePage, setVisiblePage] = useState(3)    //отображение нумерации страниц, чтобы сохранялось при ререндеринге
-
     const articlesLimit = 5
     useEffect(() => {
     const getArticleList = async () => {
