@@ -21,6 +21,51 @@
     font-family: Inter UI;
     font-size: 18px;
     line-height: 28px;
+    cursor: pointer;
+}
+
+.btnArticle {
+    height: fit-content;
+    padding: 5px;
+    font-size: 14px;
+    line-height: 22px;
+    background-color: #FFFFFF;
+    margin-left: 19px;
+    border: none;
+    cursor: pointer;
+}
+
+.btnProfile{
+    padding: 5px;
+    background-color: #FFFFFF;
+    margin-left: 26px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+}
+
+.btnProfile img {
+    height: 46px;
+    width: 46px;
+    border-radius: 23px;
+    margin-left: 12px;
+}
+
+.btnLogout {
+    margin-left: 26px;
+    padding: 12px;
+    background-color: #FFFFFF;
+    margin-left: 26px;
+    border: 1px solid black;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 28px;
+    opacity: 75%;
+    
 }
 
 .btnActive {
@@ -68,6 +113,36 @@
 
     .title {
         text-align: center;
+    }
+
+    .btnArticle {
+        height: fit-content;
+        padding: 5px;
+        font-size: 14px;
+        line-height: 22px;
+        background-color: #FFFFFF;
+        margin-left: 19px;
+        cursor: pointer;
+    }
+    
+    .btnProfile{
+        font-size: 14px;
+        line-height: 22px;
+        margin-left: 5px;
+    }
+    
+    .btnProfile img {
+        height: 28px;
+        width: 28px;
+        border-radius: 14px;
+        margin-left: 6px;
+    }
+    
+    .btnLogout {
+        margin-left: 5px;
+        padding: 5px;
+        font-size: 14px;
+        line-height: 22px;
     }
    }
 

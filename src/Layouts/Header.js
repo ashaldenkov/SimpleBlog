@@ -1,15 +1,46 @@
-import {Outlet, Link} from "react-router-dom"
+import {Outlet, Link, useNavigate} from "react-router-dom"
 import styles from './Header.module.css'
+import Cookies from 'js-cookie'
 
 export default function HeaderLayout() {
+    const navigate = useNavigate()
+    let user = {}
+    if (Cookies.get('user')) {
+        user = JSON.parse(Cookies.get('user'))
+    }
+
+    function Buttons() {
+        if (Cookies.get('user')) {
+           return (
+            //Если залогинены то кнопки профиля
+           <div className={styles.buttons}>
+                <button className={`${styles.btnArticle} ${styles.btnActive}`} onClick={() => navigate('/')}>Create article</button>
+                <button className={styles.btnProfile} onClick={() => navigate('/profile')}>
+                    <p>{user.user.username}</p>
+                    <img src={user.user.image} alt="User Icon"/>
+                </button>
+                <button className={styles.btnLogout} onClick={() => {
+                    Cookies.remove('user')
+                    navigate('/articles')
+                }}>Log Out</button>
+            </div>
+            )
+        } else {
+            //Если незалогинены то кнопки входа
+            return (
+            <div className={styles.buttons}>
+                <button className={styles.btn} onClick={() => navigate('/sign-in')}>Sign In</button>
+                <button className={`${styles.btn} ${styles.btnActive}`} onClick={() => navigate('/sign-up')}>Sign Up</button>
+            </div>
+            )
+        }
+      }
+
     return (
         <div className='header-layout'>
             <header className={styles.header}>
                 <div className={styles.title}><Link className={styles.link} to="/articles">Realworld Blog</Link></div>
-                <div className={styles.buttons}>
-                    <button className={styles.btn}>Sign In</button>
-                    <button className={`${styles.btn} ${styles.btnActive}`}>Sign Up</button>
-                </div>
+                <Buttons/>
             </header>
 
             <main>

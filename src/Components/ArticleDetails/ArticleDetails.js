@@ -1,4 +1,4 @@
-import { useLoaderData, useParams } from 'react-router-dom'
+import { useLoaderData } from 'react-router-dom'
 import styles from './ArticleDetails.module.css'
 import { format } from "date-fns";
 import heartIcon from './Icons/heart.png'
