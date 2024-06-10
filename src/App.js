@@ -47,6 +47,3 @@ function App() {
 }
 
 export default App;
-
-
-//не вставил пропсы с юзером
