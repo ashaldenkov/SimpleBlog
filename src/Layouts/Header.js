@@ -14,7 +14,7 @@ export default function HeaderLayout() {
            return (
             //Если залогинены то кнопки профиля
            <div className={styles.buttons}>
-                <button className={`${styles.btnArticle} ${styles.btnActive}`} onClick={() => navigate('/')}>Create article</button>
+                <button className={`${styles.btnArticle} ${styles.btnActive}`} onClick={() => navigate('/new-article')}>Create article</button>
                 <button className={styles.btnProfile} onClick={() => navigate('/profile')}>
                     <p>{user.user.username}</p>
                     <img src={user.user.image} alt="User Icon"/>

@@ -5,6 +5,11 @@
     height: 100%;
 }
 
+.descAndControls {
+    display: flex;
+    justify-content: space-between;
+}
+
 .articleDescription {
     background-color: white;
     margin-top: 26px;
@@ -12,6 +17,7 @@
     padding: 16px;
     width: 938px;
     min-height: 780px;
+    box-shadow: 0px 0.61px 2.93px 0px #00000005, 0px 1.46px 7.05px 0px #00000007,0px 2.75px 13.27px 0px #00000009,0px 4.91px 23.68px 0px #0000000B,0px 9.19px 44.28px 0px #0000000D,0px 22px 106px 0px #00000012;
 }
 
 .tagsAndTitle {
@@ -53,6 +59,7 @@ border: 1px solid black;
 margin-left: 8px;
 border-radius: 2px;
 padding: 2px;
+opacity: 50%;
 }
 .tag:first-child {
 margin-left: 0;
@@ -101,6 +108,95 @@ text-align: end;
 font-size: 20px;
 line-height: 28px;
 opacity: 75%;
+}
+
+.deleteBtn {
+    background-color: white;
+    color: red;
+    padding: 8px 16px;
+    border: 1px solid red;
+    border-radius: 5px;
+    font-size: 14px;
+    line-height: 22px;
+    cursor: pointer;
+}
+
+.editBtn {
+    background-color: white;
+    color: #52C41A;
+    padding: 8px 16px;
+    border: 1px solid #52C41A;
+    border-radius: 5px;
+    font-size: 14px;
+    line-height: 22px;
+    margin-left: 12px;
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+/* modal */
+.modalNo {
+    background-color: white;
+    border: 1px solid #D9D9D9;
+    color: #595959;
+    padding: 1px 8px;
+    line-height: 22px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.modalYes {
+    background-color: #1890FF;
+    border: 1px solid #1890FF;
+    color: white;
+    padding: 1px 8px;
+    line-height: 22px;
+    font-size: 14px;
+    border-radius: 4px;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.modalText {
+    display: flex;
+} 
+.modalText p {
+    color: #595959;
+    margin-left: 8px;
+    line-height: 22px;
+    font-size: 14px;
+}
+
+.modalText img {
+    margin-top: 3px;
+}
+
+.modalBtns {
+    display: flex;
+    justify-content: flex-end;
+}
+.modal {
+    background-color: white;
+    padding: 12px 16px;
+    border-radius: 4px;
+    box-shadow: 0px 0.61px 2.93px 0px #00000005, 0px 1.46px 7.05px 0px #00000007,0px 2.75px 13.27px 0px #00000009,0px 4.91px 23.68px 0px #0000000B,0px 9.19px 44.28px 0px #0000000D,0px 22px 106px 0px #00000012;
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    left: 83px;
+    width: 240px;
+    height: 104px;
+}
+
+.modalArrow {
+    position: absolute;
+    left: -6px;
+    top: 0;
+}
+
+.controlBtns {
+    position: relative;
 }
 
 @media (max-width: 700px) { 
@@ -169,6 +265,21 @@ opacity: 75%;
         }
     .createdAt {
         text-align: start;
+    }
+
+    .modal {
+        padding: 12px 16px;
+        position: absolute;
+        bottom: -110px;
+        top:auto;
+        left: -100px;
+    }
+    
+    .modalArrow {
+        position: absolute;
+        left: 140px;
+        top: -14px;
+        rotate: 90deg;
     }
 
 }

@@ -5,8 +5,8 @@ import {Navigate} from "react-router-dom"
 
 
 export default function Profile() {
-    const user = JSON.parse(Cookies.get('user'))
-
+//тк нельзя инициализировать формик с условием, то проверка логина идёт после. Добавлены значения для того чтобы парсило и не выдавало ошибку, после редирект на логин
+    const user = JSON.parse((Cookies.get('user') || '{"user": {"email": "notauthorized@not.not","username": "notauthorized"}}'))
     const validate = values => {
         const errors = {};
         if (!values.username) {
