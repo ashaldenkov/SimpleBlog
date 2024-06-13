@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react'
 import CreateArticleList from './Article/Article'
 import Pagination from './Pagination/Pagination'
 import { Circles } from 'react-loader-spinner'
+import Cookies from 'js-cookie'
 
 export default function BlogList() {
 
@@ -12,12 +13,24 @@ export default function BlogList() {
     const [pageLimit, setPageLimit] = useState(0)
     const [visiblePage, setVisiblePage] = useState(3)    //отображение нумерации страниц, чтобы сохранялось при ререндеринге
     const articlesLimit = 5
+
+
+
     useEffect(() => {
     const getArticleList = async () => {
         setLoading(true)
         setArticles()
-        const res = await fetch(`https://api.realworld.io/api/articles?offset=${5*(page-1)}&limit=${articlesLimit}`)
-
+        let res
+        if (Cookies.get('user')) {
+            const user = JSON.parse(Cookies.get('user'))
+            res = await fetch(`https://api.realworld.io/api/articles?offset=${5*(page-1)}&limit=${articlesLimit}`,
+            {headers: {
+                "Authorization": `Token ${user.user.token}`
+              }})
+        } else {
+             res = await fetch(`https://api.realworld.io/api/articles?offset=${5*(page-1)}&limit=${articlesLimit}`)
+        }
+          
         if (!res.ok) {
             throw Error('Could not fetch the articles!')
         }

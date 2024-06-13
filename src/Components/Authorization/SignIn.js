@@ -45,7 +45,7 @@ export default function SignIn() {
                   alert(error)
                 } else {
                   Cookies.set('user', JSON.stringify(data), { secure: true })
-                  navigate("/", { replace: true })
+                  navigate("/articles", { replace: true })
                 }
               })
             .catch((err) => {

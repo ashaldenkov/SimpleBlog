@@ -1,4 +1,4 @@
-import {Outlet, Link, useNavigate} from "react-router-dom"
+import {Outlet, Link, useNavigate, redirect } from "react-router-dom"
 import styles from './Header.module.css'
 import Cookies from 'js-cookie'
 
@@ -21,7 +21,8 @@ export default function HeaderLayout() {
                 </button>
                 <button className={styles.btnLogout} onClick={() => {
                     Cookies.remove('user')
-                    navigate('/articles')
+                    redirect ('/articles')
+                    window.location.reload()
                 }}>Log Out</button>
             </div>
             )
@@ -39,7 +40,7 @@ export default function HeaderLayout() {
     return (
         <div className='header-layout'>
             <header className={styles.header}>
-                <div className={styles.title}><Link className={styles.link} to="/articles">Realworld Blog</Link></div>
+                <div className={styles.title}><Link className={styles.link} reloadDocument to="/articles">Realworld Blog</Link></div>
                 <Buttons/>
             </header>
 
