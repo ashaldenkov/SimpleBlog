@@ -70,7 +70,7 @@ export default function SignUp() {
                   alert(error)
                 } else {
                   Cookies.set('user', JSON.stringify(data), { secure: true })
-                  navigate("/", { replace: true })
+                  navigate("/articles", { replace: true })
                 }
               })
             .catch((err) => {
@@ -80,7 +80,7 @@ export default function SignUp() {
       });
 
       if (Cookies.get('user')) {
-        return <Navigate to='/' replace={true}/>
+        return <Navigate to='/articles' replace={true}/>
     }
 
     return (

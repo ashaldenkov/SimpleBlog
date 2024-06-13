@@ -60,6 +60,7 @@ export default function Profile() {
                 } else {
                   Cookies.set('user', JSON.stringify(data), { secure: true })
                   resetForm()
+                  window.location.reload()
                   alert('User updated successfully!')
                 }
               })

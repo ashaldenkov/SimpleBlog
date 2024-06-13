@@ -8,13 +8,16 @@ import { v4 as uuidv4 } from 'uuid';
 import ReactMarkdown from 'react-markdown'
 import { useState } from 'react'
 import Cookies from 'js-cookie'
+import liked from './Icons/liked.png'
 
 
 export default function ArticleDetails() {
     const details = useLoaderData()
     const navigate = useNavigate();
-    const user = JSON.parse((Cookies.get('user') || '{"user": {"email": "notauthorized@not.not","username": "notauthorized"}}'))
-
+    let user = null
+    if (Cookies.get('user')) {
+        user = JSON.parse(Cookies.get('user'))
+    }
     const ModalWindow = () => {
         return (
         <div className={styles.modal}>
@@ -34,7 +37,6 @@ export default function ArticleDetails() {
                          })
                          .then((res) => {
                             if (res.ok) {
-                                alert("Article deleted! Redirectiong to main page...")
                                 navigate(`/articles`)
                             } else {
                                return res.json()
@@ -62,6 +64,50 @@ export default function ArticleDetails() {
     )
 }
     const [ modal, setModal ] = useState(false)
+    const [ favorited, setFavorited ] = useState(details.favorited)
+    const [ article, setArticle ] = useState(details)
+
+    const likePost = (article, setArticle) => {
+        let err = false;
+        fetch(`https://api.realworld.io/api/articles/${article.slug}/favorite`, 
+            { method: 'POST',
+            headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Token ${user.user.token}`
+                  }
+             })
+             .then((res) => {
+                if (!res.ok) {
+                    err = true
+                }
+                return res.json()
+            })
+            .then((data) => {
+                setArticle(data.article)
+                if (err) alert(data.errors)
+            })
+            return
+  }
+    const dislikePost = (article, setArticle) => {
+        let err = false;
+        fetch(`https://api.realworld.io/api/articles/${article.slug}/favorite`, 
+            { method: 'DELETE',
+            headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Token ${user.user.token}`
+                  }
+             })
+             .then((res) => {
+                if (!res.ok) {
+                    err = true
+                }
+                return res.json()
+        })
+    .then((data) => {
+        setArticle(data.article)
+        if (err) alert(data.errors)
+    })
+    }
     return (
         <div className={styles.titleContainer}>
             <div className={styles.articleDescription}>
@@ -69,12 +115,26 @@ export default function ArticleDetails() {
                         <div className={styles.tagsAndTitle}>
                             <div className={styles.titleAndLikes}>
                                 <div className={styles.title}>
-                                    {details.title}
+                                    {article.title}
                                 </div>
-                                <div className={styles.likes}>
-                                        <img src={heartIcon} alt="likeCount" width='16px' height='16px'/>
-                                        <p>{details.favoritesCount}</p>
-                                </div>
+                                <button className={styles.likes} onClick={() => {
+                        if (!user) {
+                            navigate(`/sign-in`)
+                        }
+                        else if (!favorited) {
+                            likePost(article, setArticle)
+                            setFavorited(true)
+                        }
+                        else {
+                            dislikePost(article, setArticle)
+                            setFavorited(false)
+                        }
+                    }}>
+                    {favorited ? 
+                    <img src={liked} alt="likeCount" width='18px' height='16px' className={styles.liked}/> : 
+                    <img src={heartIcon} alt="likeCount" width='16px' height='16px' className={styles.notLiked}/>}
+                        <p>{article.favoritesCount}</p>
+                    </button>
                             </div>
                             <div className={styles.tags}>
                             {details.tagList.map( (tag) => (
@@ -94,7 +154,7 @@ export default function ArticleDetails() {
                 <div className={styles.botInfo}>
                     <div className={styles.descAndControls}>
                         <div className={styles.titleDescription}>{details.description}</div>
-                      {(details.author.username === user.user.username)  ? <ControlsButtons/> : null}
+                      {((user) && (details.author.username === user.user.username)) ? <ControlsButtons/> : null}
                     </div>
                     <ReactMarkdown className={styles.titleText}>{details.body}</ReactMarkdown>
                 </div>
@@ -103,9 +163,24 @@ export default function ArticleDetails() {
     )
 }
 export const ArticleDetailsLoader = async ({ params }) => {
+    let user = null
+    let res
+    if (Cookies.get('user')) {
+        user = JSON.parse(Cookies.get('user'))
+    }
     const { slug } = params
-    const res = await fetch('https://api.realworld.io/api/articles/' + slug)
-    
+
+    if (user) {
+        res = await fetch('https://api.realworld.io/api/articles/' + slug, 
+            {headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Token ${user.user.token}`
+              }}
+        )
+    } else {
+        res = await fetch('https://api.realworld.io/api/articles/' + slug)
+    }
+
         if (!res.ok) {
             throw Error('Could not load the article!')
         }

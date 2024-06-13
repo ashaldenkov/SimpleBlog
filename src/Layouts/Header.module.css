@@ -95,7 +95,7 @@
     background-color: #EBEEF3;
   }
 
-  @media (max-width: 425px) { 
+  @media (max-width: 580px) { 
     .header {
         padding: 8px 12px;
         font-size: 14px;

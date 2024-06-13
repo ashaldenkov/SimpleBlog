@@ -33,7 +33,10 @@ export default function NewArticle() {
         validate,
         onSubmit: (values,{resetForm}) => {
             const user = JSON.parse(Cookies.get('user'))
-            const tagList = values.tags.map(obj => obj.name)
+            let tagList = values.tags.filter(obj => {
+              return obj.name
+            })
+            tagList = tagList.map(obj => obj.name)
             let request = {article : {title: values.title, description: values.description, body: values.body, tagList: tagList}}
             fetch(`https://api.realworld.io/api/articles`, {
                 method: "POST",
