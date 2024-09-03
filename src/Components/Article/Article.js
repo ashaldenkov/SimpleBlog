@@ -97,7 +97,7 @@ export default function CreateArticleList(articles) {
             <div className={styles.author}>
                 <div className={styles.dateAndName}>
                     <div className={styles.authorName}>{article.author.username}</div>
-                    <div className={styles.createdAt}>{format(article.updatedAt, 'LLLL dd, yyyy')}</div>
+                    <div className={styles.createdAt}>{format(article.createdAt || Date.now(), 'LLLL dd, yyyy')}</div>
                 </div>
                 <img src={article.author.image} alt="authorImage"  width='46px' height='46px'/>
             </div>
